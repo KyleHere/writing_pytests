@@ -7,7 +7,7 @@ from app.roman_numerals import parse
 
 #     assert value == 9
 
-@mark.parametrize('s, expected', [("IX", 9), ("X", 10)])
+@mark.parametrize('s, expected', [("IX", 9), ("X", 10), ("XXXIV", 34)])
 def test_roman_numeral_parser(s, expected):
     result = parse(s)
 
