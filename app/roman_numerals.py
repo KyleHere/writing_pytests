@@ -9,24 +9,23 @@ def parse(value):
         "D" : 500,
         "M" : 1000
     }
-    total = 0
+
+    total = 0 #10 #
     i = 0
 
     while i < len(value):
-        first = value[i]
-        second = value[i+1]
+        current = value[i] # C 100
+        previous = value[i-1] # X 10
         if i == 0:
-            total += dictionary[first]
-        elif dictionary[first] >= dictionary[second] :
-            total += dictionary[first]
-        elif dictionary[first] < dictionary[second]:
-            total = dictionary[second] - dictionary[first]
+            total += dictionary[current]
+        elif dictionary[current] <= dictionary[previous]:
+            total += dictionary[current]
+        elif dictionary[current] > dictionary[previous]: # 100 > 10
+            total -= dictionary[previous] # 10 -= 10
+            total += (dictionary[current] - dictionary[previous]) # 0 += 100 - 10
+        print(f"{value[i]} : {total}")
         i += 1
+
     return total
 
-
-
-
-    # for n in romans:
-    #     if n == value:
-    #         return romans.index(n) + 1
+print(parse("MCMLXXII"))
